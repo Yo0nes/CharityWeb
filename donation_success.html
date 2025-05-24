@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Successful - Save Gaza</title>
+    <link rel="stylesheet" type="text/css" href="css/main-style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .success-container {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2em;
+            color: white;
+            background-image: url("images/fffse.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .success-message {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2em;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .success-icon {
+            font-size: 4em;
+            color: #28a745;
+            margin-bottom: 0.5em;
+        }
+
+        .receipt {
+            margin-top: 2em;
+            padding: 1em;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .back-btn {
+            margin-top: 2em;
+            padding: 1em 2em;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: black;
+            transform: scale(1.05);
+        }
+
+        .return-button {
+            display: inline-block;
+            margin-top: 2em;
+            padding: 1em 2em;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .return-button:hover {
+            background: white;
+            color: black;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header class="top-header">
+        <img id="logo" src="icons/palestine-flag-new.png" alt="Palestine Flag Logo">
+        <div class="btn-container">
+            <button class="btn" onclick="window.location.href='Login.html'">Login</button>
+            <button class="btn" onclick="window.location.href='Login.html#signup'">Sign Up</button>
+        </div>
+    </header>
+
+    <div class="success-container">
+        <div class="success-message">
+            <i class='bx bxs-check-circle success-icon'></i>
+            <h1>Thank You for Your Donation!</h1>
+            <p id="donation-amount"></p>
+            <div class="receipt">
+                <h3>Receipt Number:</h3>
+                <p id="receipt-number"></p>
+                <p>A confirmation email has been sent to your email address.</p>
+            </div>
+            <a href="Save_Gaza.html" class="return-button">Return to Homepage</a>
+        </div>
+    </div>
+
+    <footer class="footer-section">
+        <div class="site-info">
+            <h2>Learn More</h2>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Financial Information</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        
+        <div class="socials">
+            <h2 style="text-align: center;">Our Socials</h2>
+            <a href="https://mail.google.com/mail/u/0/#inbox">
+                <img src="icons/gmail.png" style="width: 50px">
+            </a>
+            <a href="https://www.youtube.com/">
+                <img src="icons/youtube.png" style="width: 50px">
+            </a>
+            <a href="https://web.facebook.com/">
+                <img src="icons/facebook.png" style="width: 50px">
+            </a>
+            <a href="https://www.instagram.com/">
+                <img src="icons/instagram.png" style="width: 50px">
+            </a>
+            <a href="https://twitter.com">
+                <img src="icons/x.png" style="width: 50px">
+            </a>
+            <a href="https://linkedin.com">
+                <img src="icons/linkedin.png" style="width: 50px">
+            </a>
+        </div>
+
+        <div class="contact">
+            <h2>Contact Us</h2>
+            <p>For any inquiries or support, please reach out to us.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get donation amount and receipt number from PHP session
+            const params = new URLSearchParams(window.location.search);
+            const amount = sessionStorage.getItem('donationAmount');
+            const receipt = sessionStorage.getItem('receiptNumber');
+            
+            if (amount) {
+                document.getElementById('donation-amount').textContent = 
+                    `Your donation of $${amount} will help make a difference.`;
+            }
+            
+            if (receipt) {
+                document.getElementById('receipt-number').textContent = receipt;
+            }
+        });
+    </script>
+</body>
+</html>
